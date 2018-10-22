@@ -1,6 +1,7 @@
 package com.lemon.deeplinktest;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,7 +20,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Uri uri = getIntent().getParcelableExtra("uri");
+//        Uri uri = getIntent().getParcelableExtra("uri");
+        Uri uri = getIntentUri();
         if (uri != null && !TextUtils.isEmpty(uri.toString())) {
             ((TextView) findViewById(R.id.textView)).setText("AF Deeplink url = " + uri.toString());
         } else {
@@ -57,6 +59,15 @@ public class MainActivity extends Activity {
                     }
                 };
         AppsFlyerLib.getInstance().registerConversionListener(this, conversionDataListener);
+    }
+
+    private Uri getIntentUri() {
+        Intent intent = getIntent();
+        Uri uri = null;
+        if (null != intent) {
+            uri = intent.getData();
+        }
+        return uri;
     }
 
     private void parseAfData(Map<String, String> map) {

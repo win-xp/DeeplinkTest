@@ -15,6 +15,9 @@ public class SplashActivity extends Activity {
 
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("uri", getIntentUri());
+//        Intent origin = new Intent();
+
+        intent.setData(getIntentUri());
         startActivity(intent);
         finish();
     }

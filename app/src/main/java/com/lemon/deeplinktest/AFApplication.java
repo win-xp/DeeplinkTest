@@ -12,6 +12,7 @@ import java.util.Map;
 
 
 public class AFApplication extends Application {
+
     private static final String TAG = "appsflyer";
     private static final String AF_DEV_KEY = "wiMmKJ9xudwzNqJW6HoM2g";
 
@@ -20,7 +21,7 @@ public class AFApplication extends Application {
         super.onCreate();
         AppsFlyerLib.getInstance().setLogLevel(AFLogger.LogLevel.VERBOSE);
         AppsFlyerLib.getInstance().setDebugLog(true);
-        AppsFlyerLib.getInstance().init(AF_DEV_KEY, conversionDataListener);
+        AppsFlyerLib.getInstance().init(AF_DEV_KEY, null);
         AppsFlyerLib.getInstance().startTracking(this);
     }
 
